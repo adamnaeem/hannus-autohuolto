@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hannus autohuolto | Car maintenance garage in Suomenoja, Espoo</title>
+<meta name="description" content="Hannus autohuolto is a full-service car garage on Hannuksenpelto in Suomenoja, Espoo. Maintenance service, brakes, AC service, diagnostics, exhaust, tire swap and tire hotel. Call +358 45 6116666.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-700: #334155;
+    --slate-500: #64748b;
+    --slate-300: #cbd5e1;
+    --slate-200: #e2e8f0;
+    --bg: #f4f4f5;
+    --paper: #ffffff;
+    --amber: #d97706;
+    --amber-dark: #b45309;
+    --amber-pale: #fef3c7;
+    --green: #15803d;
+    --red: #b91c1c;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --display: "Oswald", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--slate-800);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  a { color: var(--amber-dark); }
+
+  img { display: block; max-width: 100%; }
+
+  /* ---------- Layout ---------- */
+
+  .layout {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 20px 96px;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* ---------- Sidebar ---------- */
+
+  .sidebar {
+    position: sticky;
+    top: 24px;
+    background: var(--slate-800);
+    color: #f1f5f9;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.18);
+  }
+
+  .sidebar-top {
+    background: var(--slate-900);
+    padding: 22px 22px 18px;
+    border-bottom: 3px solid var(--amber);
+  }
+
+  .garage-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .sidebar h1 {
+    font-family: var(--display);
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    color: #ffffff;
+  }
+
+  .sidebar-sub {
+    font-size: 13px;
+    color: var(--slate-300);
+    margin-top: 6px;
+  }
+
+  .open-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--slate-500);
+    flex: none;
+  }
+
+  .open-status.is-open .status-dot { background: #4ade80; }
+  .open-status.is-open .status-text { color: #4ade80; }
+  .open-status.is-closed .status-dot { background: #f87171; }
+  .open-status.is-closed .status-text { color: #f87171; }
+
+  .sidebar-body { padding: 20px 22px 22px; }
+
+  .side-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate-500);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .phone-link {
+    display: block;
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    background: var(--slate-900);
+    border: 1px solid var(--slate-700);
+    border-left: 4px solid var(--amber);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .phone-link:hover, .phone-link:focus-visible {
+    background: var(--amber);
+    border-color: var(--amber-dark);
+    color: var(--slate-900);
+  }
+
+  .phone-note {
+    font-size: 12.5px;
+    color: var(--slate-300);
+    margin-bottom: 20px;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 13.5px;
+    margin-bottom: 20px;
+  }
+
+  .hours-table th, .hours-table td {
+    text-align: left;
+    padding: 7px 4px;
+    border-bottom: 1px solid var(--slate-700);
+  }
+
+  .hours-table tr:last-child th, .hours-table tr:last-child td { border-bottom: none; }
+
+  .hours-table th { font-weight: 400; color: var(--slate-300); }
+  .hours-table td { text-align: right; color: #f1f5f9; white-space: nowrap; }
+
+  .hours-table tr.today th, .hours-table tr.today td { color: var(--amber); font-weight: 700; }
+
+  .address-block {
+    font-style: normal;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: #f1f5f9;
+    margin-bottom: 10px;
+  }
+
+  .address-block .addr-street { font-weight: 600; }
+
+  .directions-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(217, 119, 6, 0.45);
+    padding-bottom: 2px;
+  }
+
+  .directions-link:hover, .directions-link:focus-visible { color: #fbbf24; border-bottom-color: #fbbf24; }
+
+  .directions-link svg { flex: none; }
+
+  /* ---------- Main column ---------- */
+
+  .main { min-width: 0; }
+
+  .main h2 {
+    font-family: var(--display);
+    font-size: 26px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--slate-900);
+    margin-bottom: 14px;
+  }
+
+  .section-rule {
+    height: 4px;
+    width: 56px;
+    background: var(--amber);
+    margin-bottom: 18px;
+  }
+
+  .intro-card {
+    background: var(--paper);
+    border: 1px solid var(--slate-200);
+    border-radius: 6px;
+    padding: 28px 30px;
+    margin-bottom: 28px;
+  }
+
+  .intro-card .kicker {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-dark);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .intro-card h2 { font-size: 30px; }
+
+  .intro-card p { color: var(--slate-700); margin-bottom: 14px; max-width: 62ch; }
+  .intro-card p:last-of-type { margin-bottom: 0; }
+
+  .intro-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    list-style: none;
+  }
+
+  .intro-facts li {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    background: var(--bg);
+    border: 1px solid var(--slate-200);
+    border-radius: 4px;
+    padding: 6px 12px;
+    color: var(--slate-700);
+  }
+
+  /* ---------- Winter tire highlight ---------- */
+
+  .tire-box {
+    background: var(--slate-900);
+    color: #f1f5f9;
+    border-radius: 6px;
+    border-top: 4px solid var(--amber);
+    padding: 28px 30px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 26px;
+    align-items: center;
+  }
+
+  .tire-box .kicker {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .tire-box h2 { color: #ffffff; margin-bottom: 10px; }
+
+  .tire-box p { color: var(--slate-300); font-size: 15px; margin-bottom: 12px; }
+  .tire-box p:last-of-type { margin-bottom: 0; }
+
+  .tire-box strong { color: #ffffff; }
+
+  .tire-facts {
+    list-style: none;
+    margin-top: 16px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .tire-facts li {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 14px;
+    color: #e2e8f0;
+  }
+
+  .tire-facts li::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--amber);
+    flex: none;
+    transform: translateY(-1px);
+  }
+
+  .tire-cta {
+    display: inline-block;
+    margin-top: 18px;
+    background: var(--amber);
+    color: var(--slate-900);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 11px 20px;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+  }
+
+  .tire-cta:hover, .tire-cta:focus-visible { background: #f59e0b; }
+
+  .tire-photo {
+    background: var(--slate-700);
+    border-radius: 4px;
+    overflow: hidden;
+    align-self: stretch;
+    min-height: 220px;
+  }
+
+  .tire-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---------- Services ---------- */
+
+  .services-section { margin-bottom: 28px; }
+
+  .services-lead { color: var(--slate-700); max-width: 62ch; margin-bottom: 20px; }
+
+  .services-list {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+
+  .service-item {
+    background: var(--paper);
+    border: 1px solid var(--slate-200);
+    border-left: 4px solid var(--slate-800);
+    border-radius: 4px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 20px;
+    align-items: center;
+    transition: border-left-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .service-item:hover {
+    border-left-color: var(--amber);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  }
+
+  .service-name {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--slate-900);
+  }
+
+  .service-desc {
+    grid-column: 1;
+    font-size: 14px;
+    color: var(--slate-500);
+  }
+
+  .service-price {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--amber-dark);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .service-price .from {
+    display: block;
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-500);
+  }
+
+  .price-note {
+    font-size: 13px;
+    color: var(--slate-500);
+    margin-top: 14px;
+  }
+
+  /* ---------- Photo strip ---------- */
+
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .photo-frame {
+    background: var(--slate-800);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    min-height: 200px;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+
+  .photo-caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: var(--slate-900);
+    color: var(--slate-300);
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+  }
+
+  /* ---------- Booking form ---------- */
+
+  .booking-section {
+    background: var(--paper);
+    border: 1px solid var(--slate-200);
+    border-radius: 6px;
+    padding: 28px 30px;
+    margin-bottom: 28px;
+  }
+
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+
+  .field label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-700);
+    font-weight: 700;
+  }
+
+  .field label .opt {
+    color: var(--slate-500);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .field input, .field textarea {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--slate-900);
+    background: var(--bg);
+    border: 1px solid var(--slate-300);
+    border-radius: 4px;
+    padding: 11px 13px;
+    width: 100%;
+  }
+
+  .field input:focus, .field textarea:focus {
+    outline: 2px solid var(--amber);
+    outline-offset: 1px;
+    border-color: var(--amber);
+    background: #ffffff;
+  }
+
+  .field textarea { resize: vertical; min-height: 120px; }
+
+  .submit-btn {
+    grid-column: 1 / -1;
+    justify-self: start;
+    background: var(--slate-800);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 13px 28px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .submit-btn:hover, .submit-btn:focus-visible { background: var(--amber-dark); }
+
+  .form-note {
+    font-size: 13px;
+    color: var(--slate-500);
+    margin-top: 14px;
+  }
+
+  .form-confirmation {
+    display: none;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-left: 4px solid var(--green);
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin-top: 18px;
+  }
+
+  .form-confirmation.visible { display: block; }
+
+  .form-confirmation strong {
+    display: block;
+    color: var(--green);
+    margin-bottom: 4px;
+    font-size: 15px;
+  }
+
+  .form-confirmation p { font-size: 14px; color: var(--slate-700); }
+
+  /* ---------- Visit / directions strip ---------- */
+
+  .visit-strip {
+    background: var(--slate-800);
+    color: #f1f5f9;
+    border-radius: 6px;
+    padding: 24px 30px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 40px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .visit-strip .visit-info {
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .visit-strip .visit-info strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #ffffff;
+    margin-bottom: 2px;
+  }
+
+  .visit-strip .visit-info .mono { font-family: var(--mono); font-size: 13.5px; }
+
+  .visit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--amber);
+    color: var(--slate-900);
+    font-weight: 700;
+    font-size: 14.5px;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+  }
+
+  .visit-btn:hover, .visit-btn:focus-visible { background: #f59e0b; }
+
+  /* ---------- Footer ---------- */
+
+  .site-footer {
+    background: var(--slate-900);
+    color: var(--slate-300);
+    padding: 30px 30px 26px;
+    border-radius: 6px;
+    border-top: 3px solid var(--amber);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 18px;
+  }
+
+  .site-footer .footer-name {
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+
+  .site-footer p { font-size: 13.5px; margin-bottom: 4px; }
+
+  .site-footer .mono { font-family: var(--mono); }
+
+  .site-footer a { color: var(--amber); text-decoration: none; }
+  .site-footer a:hover { text-decoration: underline; }
+
+  .footer-demo {
+    border-top: 1px solid var(--slate-700);
+    padding-top: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate-500);
+  }
+
+  /* ---------- Mobile call bar ---------- */
+
+  .mobile-callbar {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    background: var(--slate-900);
+    border-top: 2px solid var(--amber);
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-callbar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--amber);
+    color: var(--slate-900);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 17px;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 4px;
+  }
+
+  /* ---------- Scroll reveal ---------- */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+      padding-bottom: 110px;
+    }
+    .sidebar { position: static; order: -1; }
+    .tire-box { grid-template-columns: 1fr; }
+    .tire-photo { min-height: 0; }
+    .tire-photo img { height: 220px; width: 100%; object-fit: cover; }
+    .mobile-callbar { display: block; }
+  }
+
+  @media (max-width: 560px) {
+    .layout { padding: 16px 14px 110px; gap: 20px; }
+    .intro-card, .booking-section { padding: 20px 18px; }
+    .tire-box { padding: 22px 18px; }
+    .photo-strip { grid-template-columns: 1fr; }
+    .photo-frame img { height: 210px; }
+    .booking-grid { grid-template-columns: 1fr; }
+    .service-item { grid-template-columns: 1fr; }
+    .service-price { grid-column: 1; grid-row: auto; text-align: left; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .phone-link { font-size: 21px; }
+    .sidebar h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="sidebar" aria-label="Garage contact information">
+    <div class="sidebar-top">
+      <span class="garage-tag">Autohuolto, Suomenoja, Espoo</span>
+      <h1>Hannus autohuolto</h1>
+      <p class="sidebar-sub">Full-service car maintenance on Hannuksenpelto. Walk-ins welcome, booking recommended.</p>
+      <div class="open-status" id="openStatus">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-text" id="openStatusText">Checking hours...</span>
+      </div>
+    </div>
+    <div class="sidebar-body">
+      <span class="side-label">Call the garage</span>
+      <a class="phone-link" href="tel:+358456116666">+358 45 6116666</a>
+      <p class="phone-note">Fastest way to book. We speak Finnish and English.</p>
+
+      <span class="side-label">Opening hours</span>
+      <table class="hours-table" id="hoursTable">
+        <tbody>
+          <tr data-day="1"><th scope="row">Mon</th><td>08:00-17:00</td></tr>
+          <tr data-day="2"><th scope="row">Tue</th><td>08:00-17:00</td></tr>
+          <tr data-day="3"><th scope="row">Wed</th><td>08:00-17:00</td></tr>
+          <tr data-day="4"><th scope="row">Thu</th><td>08:00-17:00</td></tr>
+          <tr data-day="5"><th scope="row">Fri</th><td>08:00-17:00</td></tr>
+          <tr data-day="6"><th scope="row">Sat</th><td>10:00-13:00</td></tr>
+          <tr data-day="0"><th scope="row">Sun</th><td>Closed</td></tr>
+        </tbody>
+      </table>
+
+      <span class="side-label">Find us</span>
+      <address class="address-block">
+        <span class="addr-street">Hannuksenpelto 2A</span><br>
+        02270 Espoo<br>
+        Suomenoja, near the S-Market
+      </address>
+      <a class="directions-link" href="https://www.google.com/maps/place/Hannus+autohuolto/@60.1534534,24.6965723" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Get directions
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN ==================== -->
+  <main class="main">
+
+    <!-- Intro -->
+    <section class="intro-card reveal">
+      <span class="kicker">Your neighborhood garage</span>
+      <h2>Straightforward car care in Suomenoja</h2>
+      <div class="section-rule"></div>
+      <p>Hannus autohuolto is an independent, full-service garage on Hannuksenpelto, serving drivers in Suomenoja, Matinkylä and the rest of southern Espoo. We handle everything from scheduled maintenance and brakes to AC service, diagnostics and exhaust work, on most makes and models.</p>
+      <p>No upselling, no surprises. We check the car, tell you what actually needs doing, quote the price before we start, and show you the old parts when we are done. That is how a local garage earns repeat customers.</p>
+      <ul class="intro-facts">
+        <li>All makes and models</li>
+        <li>Warranty-safe maintenance</li>
+        <li>Written quote before work</li>
+        <li>Old parts returned on request</li>
+      </ul>
+    </section>
+
+    <!-- Winter tire highlight -->
+    <section class="tire-box reveal" aria-labelledby="tireHeading">
+      <div>
+        <span class="kicker">It is November: winter tire season</span>
+        <h2 id="tireHeading">Tire swap and tire hotel</h2>
+        <p>Winter tires are <strong>required in Finland from December to February</strong> whenever conditions call for them, and <strong>studded tires are already allowed from November</strong>. November is the busiest tire month of the year, so book your slot now instead of queuing in the first snowfall.</p>
+        <ul class="tire-facts">
+          <li>Tire swap with balancing, from 35 €</li>
+          <li>Tire hotel: we store your off-season set, from 59 € per season</li>
+          <li>Free tread depth and pressure check with every swap</li>
+          <li>Same-day slots most weekdays</li>
+        </ul>
+        <a class="tire-cta" href="tel:+358456116666">Book a tire slot: +358 45 6116666</a>
+      </div>
+      <div class="tire-photo">
+        <img src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=1200&q=70" alt="Stack of car tires ready for seasonal storage" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-section reveal" aria-labelledby="servicesHeading">
+      <h2 id="servicesHeading">Services and from-prices</h2>
+      <div class="section-rule"></div>
+      <p class="services-lead">Prices below are honest starting points including VAT and standard parts. The exact quote depends on your car, and you always approve it before we pick up a wrench.</p>
+      <ul class="services-list">
+        <li class="service-item">
+          <span class="service-name">Maintenance service</span>
+          <span class="service-price"><span class="from">from</span>129 €</span>
+          <span class="service-desc">Oil and filter change, fluid top-ups, and a full inspection per the manufacturer's schedule. Keeps your factory warranty valid.</span>
+        </li>
+        <li class="service-item">
+          <span class="service-name">Brakes</span>
+          <span class="service-price"><span class="from">from</span>179 €</span>
+          <span class="service-desc">Pads and discs per axle, caliper service, brake fluid change. We measure wear first and only replace what is worn.</span>
+        </li>
+        <li class="service-item">
+          <span class="service-name">AC service</span>
+          <span class="service-price"><span class="from">from</span>79 €</span>
+          <span class="service-desc">Leak check, refrigerant refill, and cabin filter replacement. Worth doing before summer, not during a heatwave.</span>
+        </li>
+        <li class="service-item">
+          <span class="service-name">Diagnostics</span>
+          <span class="service-price"><span class="from">from</span>49 €</span>
+          <span class="service-desc">Fault code reading and a plain-language report of what the warning light actually means, plus a fix recommendation.</span>
+        </li>
+        <li class="service-item">
+          <span class="service-name">Exhaust</span>
+          <span class="service-price"><span class="from">from</span>99 €</span>
+          <span class="service-desc">Leak repair, hangers, mid and rear silencer replacement. We weld when welding is enough.</span>
+        </li>
+        <li class="service-item">
+          <span class="service-name">Tire swap and tire hotel</span>
+          <span class="service-price"><span class="from">from</span>35 €</span>
+          <span class="service-desc">Seasonal swap with balancing. Add storage from 59 € per season and skip hauling tires up the stairs twice a year.</span>
+        </li>
+      </ul>
+      <p class="price-note">Something else on your mind? Timing belts, suspension, batteries, pre-inspection checks before the katsastus: call and ask. If we cannot do it well, we will say so.</p>
+    </section>
+
+    <!-- Photos -->
+    <section class="photo-strip reveal" aria-label="Photos from the garage">
+      <figure class="photo-frame">
+        <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=1200&q=70" alt="Car raised on a lift in the workshop" loading="lazy" onerror="this.style.display='none'">
+        <figcaption class="photo-caption">The workshop, Hannuksenpelto 2A</figcaption>
+      </figure>
+      <figure class="photo-frame">
+        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=70" alt="Mechanic working on a car engine" loading="lazy" onerror="this.style.display='none'">
+        <figcaption class="photo-caption">Engine bay work, done by the book</figcaption>
+      </figure>
+    </section>
+
+    <!-- Booking form -->
+    <section class="booking-section reveal" aria-labelledby="bookingHeading">
+      <span class="kicker" style="font-family:var(--mono); font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--amber-dark); display:block; margin-bottom:10px;">Book a service</span>
+      <h2 id="bookingHeading">Request a booking</h2>
+      <div class="section-rule"></div>
+      <p class="services-lead">Tell us what your car needs and we will call you back with a time and a price. For urgent matters, calling <a href="tel:+358456116666">+358 45 6116666</a> is faster.</p>
+      <form id="bookingForm" class="booking-grid" novalidate>
+        <div class="field">
+          <label for="fName">Name</label>
+          <input type="text" id="fName" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="fContact">Phone or email</label>
+          <input type="text" id="fContact" name="contact" autocomplete="tel" required>
+        </div>
+        <div class="field full">
+          <label for="fMessage">Message <span class="opt">(car model, what needs doing, preferred time)</span></label>
+          <textarea id="fMessage" name="message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send booking request</button>
+      </form>
+      <p class="form-note">We reply during opening hours, usually the same day. This form does not store or send your data anywhere; it is a demo.</p>
+      <div class="form-confirmation" id="formConfirmation" role="status">
+        <strong>Request received.</strong>
+        <p id="confirmationText">Thanks. We will get back to you during opening hours with a time and a price.</p>
+      </div>
+    </section>
+
+    <!-- Visit strip -->
+    <section class="visit-strip reveal" aria-label="Visit the garage">
+      <div class="visit-info">
+        <strong>Drop by or call ahead</strong>
+        Hannuksenpelto 2A, 02270 Espoo<br>
+        <span class="mono">Mon-Fri 08:00-17:00, Sat 10:00-13:00, Sun closed</span>
+      </div>
+      <a class="visit-btn" href="https://www.google.com/maps/place/Hannus+autohuolto/@60.1534534,24.6965723" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Get directions
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-name">Hannus autohuolto</p>
+          <p>Hannuksenpelto 2A, 02270 Espoo</p>
+          <p>Serving Suomenoja and Matinkylä</p>
+        </div>
+        <div>
+          <p class="mono">Phone: <a href="tel:+358456116666">+358 45 6116666</a></p>
+          <p class="mono">Mon-Fri 08:00-17:00</p>
+          <p class="mono">Sat 10:00-13:00, Sun closed</p>
+        </div>
+      </div>
+      <p class="footer-demo">Demo website</p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Mobile call bar -->
+<div class="mobile-callbar">
+  <a href="tel:+358456116666">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call +358 45 6116666
+  </a>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Open now indicator ---------- */
+  // Hours: Mon-Fri 08:00-17:00, Sat 10:00-13:00, Sun closed
+  var HOURS = {
+    0: null,            // Sunday
+    1: [8, 17],         // Monday
+    2: [8, 17],
+    3: [8, 17],
+    4: [8, 17],
+    5: [8, 17],
+    6: [10, 13]         // Saturday
+  };
+
+  function updateOpenStatus() {
+    var statusBox = document.getElementById("openStatus");
+    var statusText = document.getElementById("openStatusText");
+    var now = new Date();
+    var day = now.getDay();
+    var hour = now.getHours() + now.getMinutes() / 60;
+    var today = HOURS[day];
+
+    // Highlight today's row in the hours table
+    var rows = document.querySelectorAll("#hoursTable tr");
+    rows.forEach(function (row) {
+      row.classList.toggle("today", Number(row.getAttribute("data-day")) === day);
+    });
+
+    if (today && hour >= today[0] && hour < today[1]) {
+      var closes = (today[1] < 10 ? "0" : "") + today[1] + ":00";
+      statusBox.className = "open-status is-open";
+      statusText.textContent = "Open now, closes " + closes;
+    } else {
+      statusBox.className = "open-status is-closed";
+      statusText.textContent = "Closed now, " + nextOpening(now);
+    }
+  }
+
+  function nextOpening(now) {
+    var day = now.getDay();
+    var hour = now.getHours() + now.getMinutes() / 60;
+    var names = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    // Opens later today?
+    var today = HOURS[day];
+    if (today && hour < today[0]) {
+      return "opens today at " + (today[0] < 10 ? "0" : "") + today[0] + ":00";
+    }
+    // Find the next open day
+    for (var i = 1; i <= 7; i++) {
+      var d = (day + i) % 7;
+      var h = HOURS[d];
+      if (h) {
+        var label = i === 1 ? "tomorrow" : names[d];
+        return "opens " + label + " at " + (h[0] < 10 ? "0" : "") + h[0] + ":00";
+      }
+    }
+    return "call us for times";
+  }
+
+  updateOpenStatus();
+  setInterval(updateOpenStatus, 60000);
+
+  /* ---------- Booking form ---------- */
+  var form = document.getElementById("bookingForm");
+  var confirmation = document.getElementById("formConfirmation");
+  var confirmationText = document.getElementById("confirmationText");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    var name = form.elements.name.value.trim();
+    var contact = form.elements.contact.value.trim();
+    var message = form.elements.message.value.trim();
+
+    if (!name || !contact || !message) {
+      confirmation.classList.add("visible");
+      confirmation.style.background = "#fef2f2";
+      confirmation.style.borderColor = "#fca5a5";
+      confirmation.querySelector("strong").textContent = "Missing details.";
+      confirmation.querySelector("strong").style.color = "#b91c1c";
+      confirmationText.textContent = "Please fill in your name, a phone number or email, and a short message so we can reach you.";
+      confirmation.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    confirmation.style.background = "";
+    confirmation.style.borderColor = "";
+    confirmation.querySelector("strong").textContent = "Request received.";
+    confirmation.querySelector("strong").style.color = "";
+    confirmationText.textContent = "Thanks, " + name.split(" ")[0] + ". We will call or write back to " + contact + " during opening hours with a time and a price. For anything urgent, call +358 45 6116666.";
+    confirmation.classList.add("visible");
+    form.reset();
+    confirmation.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("visible"); });
+  }
+})();
+</script>
+</body>
+</html>
